@@ -20,8 +20,14 @@ const MyGarden = () => {
     });
 }, []);
   
+const deletePlant = (id) => {
+  console.log("delete a plant");
+  console.log("id");
+}
+  
+}
 
-    return (
+return (
              <div className="container">
         <div className="row">    
         <div className="col s12">
@@ -64,7 +70,9 @@ const MyGarden = () => {
             <td>{moisture}</td>
             <td>{sunTolerance}</td>
             <td>{maxHeight}</td>
-            <td>Checkbox?</td>
+            <td>
+              <FontAwesomeIcon icon={faTrash} onClick={() => {deletePlant(_id)}}/>
+              </td>
           </tr>
             )
           )}
