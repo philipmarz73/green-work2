@@ -1,23 +1,46 @@
 import React, {useEffect, useState} from 'react';
+import { FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
+
 const MyGarden = () => {
 
 
   const [plants, setPlants] = useState([]);
     
   useEffect(() => {
+    getPlants();
+  }, []);
+
+  const getPlants = () => {
     axios
-    .get("/api/plant")
+    .get("/api/plants")
     .then((response) => {
       console.log(response.data);
       setPlants(response.data);
     })
-    .catch((err => {
+    .catch(err => {
       console.log(err);
-    }),
-  }, []);
+    });
+  };
+  
+const deletePlant = (id) => {
+  console.log("delete a plant");
+  console.log("id");
+  axios
+  .delete(`/api/plants/${id}`)
+  .then(() => {
+    getPlants();
+  })
+  .catch(err => {
+    console.log(err);
+  });
 
-    return (
+};
+  
+
+
+return (
              <div className="container">
         <div className="row">    
         <div className="col s12">
@@ -54,13 +77,15 @@ const MyGarden = () => {
             }) => (
             <tr key={_id}>
             <td>{title}</td>
-            <td><img src={imageURL} alt={plant} style={{height: "4em"}}></img></td>
+            <td><img src={imageURL} alt={title} style={{height: "4em"}}></img></td>
             <td>{plantType}</td>
             <td>{sciName}</td>
             <td>{moisture}</td>
             <td>{sunTolerance}</td>
             <td>{maxHeight}</td>
-            <td>Checkbox?</td>
+            <td>
+              <FontAwesomeIcon icon={faTrash} onClick={() => {deletePlant(_id)}}/>
+              </td>
           </tr>
             )
           )}
@@ -70,6 +95,6 @@ const MyGarden = () => {
   </div> 
 </div>
     );
-};
+            };
 
 export default MyGarden;

@@ -4,21 +4,24 @@ import GardenTable from "../../components/GardenTable/GardenTable";
 
 const NewPlants = () => {
     const [title, setTitle] = useState("");
+    const [imageURL, setImageURL] = useState("");
     const [plantType, setplantType] = useState("");
     const [sciName, setSciName] = useState("");
-    const [imageURL, setImageURL] = useState("");
+    const [moisture, setMoisture] = useState("");
+    const [sunTolerance, setSunTolerance] = useState("");
     const [maxHeight, setMaxHeight] = useState("");
     // const [added, setAdded] = useState(false);
     
     const handleFormSubmit = (e) => {
         e.preventDefault();
         axios
-            .post("/api/plantAsk", {
-                imageURL: imageURL,
+            .post("/api/plant", {
                 title: title,
+                imageURL: imageURL,
+                plantType: plantType,
                 sciName: sciName,
-                type: plantType,
-                // sunTolerance: sunTolerance,
+                moisture:moisture,
+                sunTolerance: sunTolerance,
                 maxHeight: maxHeight,
 
 
@@ -42,7 +45,7 @@ const NewPlants = () => {
         
   
   <div className="row">
-    <form className="col s12"> onSubmit={handleFormSubmit}>
+    <form className="col s12" onSubmit={handleFormSubmit}>
       <div className="row">
         <div className="input-field col s6">
           <input placeholder="Plant Name" 
