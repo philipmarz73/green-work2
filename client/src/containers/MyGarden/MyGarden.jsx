@@ -23,6 +23,9 @@ const MyGarden = () => {
 const deletePlant = (id) => {
   console.log("delete a plant");
   console.log("id");
+  axios.delete(`/api/plants/${id}`).then((response) => {
+    console.log(response.data);
+  });
 }
   
 }
