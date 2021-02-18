@@ -19,8 +19,8 @@ const NewPlants = () => {
                 title: title,
                 imageURL: imageURL,
                 plantType: plantType,
-                sciName: sciName
-                moisture:moisture
+                sciName: sciName,
+                moisture:moisture,
                 sunTolerance: sunTolerance,
                 maxHeight: maxHeight,
 
