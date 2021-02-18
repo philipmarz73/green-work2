@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from "axios";
 import GardenTable from "../../components/GardenTable/GardenTable";
 
-const NewPlants = () => {
+const StartGarden = () => {
     const [title, setTitle] = useState("");
     const [imageURL, setImageURL] = useState("");
     const [plantType, setplantType] = useState("");
@@ -19,8 +19,8 @@ const NewPlants = () => {
                 title: title,
                 imageURL: imageURL,
                 plantType: plantType,
-                sciName: sciName
-                moisture:moisture
+                sciName: sciName,
+                moisture:moisture,
                 sunTolerance: sunTolerance,
                 maxHeight: maxHeight,
 
@@ -45,7 +45,7 @@ const NewPlants = () => {
         
   
   <div className="row">
-    <form className="col s12"> onSubmit={handleFormSubmit}>
+    <form className="col s12" onSubmit={handleFormSubmit}>
       <div className="row">
         <div className="input-field col s6">
           <input placeholder="Plant Name" 
