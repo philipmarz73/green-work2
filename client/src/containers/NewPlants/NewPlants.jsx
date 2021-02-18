@@ -4,21 +4,24 @@ import GardenTable from "../../components/GardenTable/GardenTable";
 
 const NewPlants = () => {
     const [title, setTitle] = useState("");
+    const [imageURL, setImageURL] = useState("");
     const [plantType, setplantType] = useState("");
     const [sciName, setSciName] = useState("");
-    const [imageURL, setImageURL] = useState("");
+    const [moisture, setMoisture] = useState("");
+    const [sunTolerance, setSunTolerance] = useState("");
     const [maxHeight, setMaxHeight] = useState("");
     // const [added, setAdded] = useState(false);
     
     const handleFormSubmit = (e) => {
         e.preventDefault();
         axios
-            .post("/api/plantAsk", {
-                imageURL: imageURL,
+            .post("/api/plant", {
                 title: title,
-                sciName: sciName,
-                type: plantType,
-                // sunTolerance: sunTolerance,
+                imageURL: imageURL,
+                plantType: plantType,
+                sciName: sciName
+                moisture:moisture
+                sunTolerance: sunTolerance,
                 maxHeight: maxHeight,
 
 

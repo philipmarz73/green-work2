@@ -17,7 +17,7 @@ Plant.find()
 });
 router.post("/", (req, res) => {
     console.log(req.body);
-    PlantAsk.create(req.body).then((newPlant) => {
+    Plant.create(req.body).then((newPlant) => {
         console.log(newPlant);
         res.json(newPlant);
 

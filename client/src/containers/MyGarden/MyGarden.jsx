@@ -14,7 +14,7 @@ const MyGarden = () => {
 
   const getPlants = () => {
     axios
-    .get("/api/plant")
+    .get("/api/plants")
     .then((response) => {
       console.log(response.data);
       setPlants(response.data);
