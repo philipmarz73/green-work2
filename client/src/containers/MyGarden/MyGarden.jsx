@@ -19,7 +19,7 @@ const MyGarden = () => {
       console.log(response.data);
       setPlants(response.data);
     })
-    .catch((err => {
+    .catch(err => {
       console.log(err);
     });
   };
@@ -32,7 +32,7 @@ const deletePlant = (id) => {
   .then(() => {
     getPlants();
   })
-  .catch((err => {
+  .catch(err => {
     console.log(err);
   });
 
@@ -77,7 +77,7 @@ return (
             }) => (
             <tr key={_id}>
             <td>{title}</td>
-            <td><img src={imageURL} alt={plant} style={{height: "4em"}}></img></td>
+            <td><img src={imageURL} alt={title} style={{height: "4em"}}></img></td>
             <td>{plantType}</td>
             <td>{sciName}</td>
             <td>{moisture}</td>
