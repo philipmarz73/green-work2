@@ -9,6 +9,10 @@ const MyGarden = () => {
   const [plants, setPlants] = useState([]);
     
   useEffect(() => {
+    getPlants();
+  }, []);
+
+  const getPlants = () => {
     axios
     .get("/api/plant")
     .then((response) => {
@@ -18,17 +22,23 @@ const MyGarden = () => {
     .catch((err => {
       console.log(err);
     });
-}, []);
+  };
   
 const deletePlant = (id) => {
   console.log("delete a plant");
   console.log("id");
-  axios.delete(`/api/plants/${id}`).then((response) => {
-    console.log(response.data);
+  axios
+  .delete(`/api/plants/${id}`)
+  .then(() => {
+    getPlants();
+  })
+  .catch((err => {
+    console.log(err);
   });
-}
+
+};
   
-}
+
 
 return (
              <div className="container">
