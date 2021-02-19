@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 import GardenTable from "../../components/GardenTable/GardenTable";
 
-const StartGarden = () => {
+
+// const StartGarden = () => {
     const [title, setTitle] = useState("");
     const [imageURL, setImageURL] = useState("");
     const [plantType, setplantType] = useState("");
@@ -11,8 +13,11 @@ const StartGarden = () => {
     const [sunTolerance, setSunTolerance] = useState("");
     const [maxHeight, setMaxHeight] = useState("");
     // const [added, setAdded] = useState(false);
+    const StartGarden = () => {
+      const history = useHistory();
     
-    const handleFormSubmit = (e) => {
+
+    const handleFormSubmit = (e, plantData) => {
         e.preventDefault();
         axios
             .post("/api/plant", {
@@ -28,6 +33,7 @@ const StartGarden = () => {
             })
             .then((response) => {
                 console.log(response.data);
+                history.push("/myGarden")
             })
             .catch((err) => {
                 console.log(err);
