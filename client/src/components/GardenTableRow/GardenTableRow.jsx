@@ -64,7 +64,19 @@ const GardenTableRow = ({
 };
 
 GardenTableRow.propTypes = {
-    
+    _id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    imageURL: PropTypes.string.isRequired,
+    scientificName: PropTypes.string,
+    moistureTolerance: PropTypes.string.isRequired,
+    sunTolerance: PropTypes.string.isRequired,
+    maxHeight: PropTypes.number.isRequired,
+    getPlants: PropTypes.func.isRequired,
+
+
+
+
+
 };
 
 export default GardenTableRow;
