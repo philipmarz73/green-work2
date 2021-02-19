@@ -30,6 +30,8 @@ connection.on("error", (err) => {
 
 const PlantController = require("./controllers/plantController");
 const userController = require("./controllers/userController");
+const AuthController = require("./controllers/authController");
+
 if (process.env.NODE_ENV==="production"){
     app.use(express.static("client/build"));
 }
@@ -42,6 +44,7 @@ app.get("/api/config", (req, res) => {
 
 app.use("/api/plant", PlantController);
 app.use("/api/user", userController);
+app.use("/api/auth", AuthController);
 
 app.post("/api/login", (req, res) => {
     res.json({
