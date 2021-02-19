@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, {useState} from 'react';
 import { useHistory } from "react-router-dom";
+import jwt from "jsonwebtoken";
 
 const LogIn = ({setToken}) => {
     const [email, setEmail] = useState("");
@@ -12,11 +13,21 @@ const LogIn = ({setToken}) => {
         e.preventDefault();
         axios
         .post("/api/auth/login", {email, password})
-        .then(response => {
+        .then((response) => {
             console.log(response.data);
+            jwt.verify(response.data.token, 
+                process.env.REACT_APP_JWT_SIGNATURE,
+                (err, decoded) => {
+                if(err) {
+                    console.log(err);
+                }else{
+                
             setToken(response.data.token);
             history.push("/MyGarden");
-        })
+            }
+        }
+    );
+})
         .catch((err) => {
             console.log(err);
         });

@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/user");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 router.post("/", (req, res) => {
     bcrypt.hash(req.body.password, 10).then((hashedPassword) => {
@@ -13,7 +14,14 @@ router.post("/", (req, res) => {
     };
     User.create(newUser)
     .then(newUser => {
-        res.json(newUser);
+        const token = jwt.sign(
+            { _id: newUser._id},
+            process.env.JWT_SIGNATURE,{
+
+            }
+        );
+        console.log(token);
+        res.json({token: token,});
     })
     .catch((err) => {
         console.log(err);
@@ -29,8 +37,11 @@ router.post("/login", (req, res) => {
         bcrypt.compare(req.body.password, foundUser.password).then((result) => {
             console.log(result);
             if (result) {
+                const token = jwt.sign({_id: foundUser._id}, process.env.JWT_SIGNATURE, {
+                });
+                console.log(token);
                 res.json({
-                    token: "babba",
+                    token: token,
                 });
             } else {
                 res.status(401).end();
