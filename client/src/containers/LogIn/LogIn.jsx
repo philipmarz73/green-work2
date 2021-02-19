@@ -1,8 +1,8 @@
 import axios from 'axios';
-import React from 'react';
+import React, {useState} from 'react';
 import { useHistory } from "react-router-dom";
 
-const LogIn = () => {
+const LogIn = ({setToken}) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -10,7 +10,8 @@ const LogIn = () => {
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
-        axios.post("/api/login", {email, password})
+        axios
+        .post("/api/auth/login", {email, password})
         .then(response => {
             console.log(response.data);
             setToken(response.data.token);
@@ -24,7 +25,7 @@ const LogIn = () => {
         <div className="container">
         <div className="row">    
         <div className="col">
-        <h1 className="center-align">Log In</h1>
+        <h1 className="center-align">Welcome! Please Log In to Continue</h1>
             </div> 
             </div>
             <div className="row">
