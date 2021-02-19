@@ -13,6 +13,7 @@ const LogIn = () => {
         axios.post("/api/login", {email, password})
         .then(response => {
             console.log(response.data);
+            setToken(response.data.token);
             history.push("/MyGarden");
         })
         .catch((err) => {

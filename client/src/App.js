@@ -11,10 +11,13 @@ import Resources from "./containers/Resources/Resources";
 import SignIn from "./containers/SignIn/SignIn";
 import StartGarden from "./containers/StartGarden/StartGarden";
 import NavBar from "./components/NavBar/NavBar";
-
+// import AlertContext from "./utils/alertContext";
 
 
 function App() {
+  // const [alert, setAlert] = useState({ message: "", type: "" });
+  const [token, setToken] = useState("");
+
   return (
     <div>
       <Router>
@@ -24,7 +27,9 @@ function App() {
           <Route exact path="/about" component={About}/>
           <Route exact path="/addToGarden" component={AddToGarden}/>
           <Route exact path="/contact" component={Contact}/>
-          <Route exact path="/logIn" component={LogIn}/>
+          <Route exact path="/logIn" 
+            component={(props) => <Login {...props} setToken={setToken} />}
+            />
           <Route exact path="/newPlants" component={NewPlants}/>
           <Route exact path="/myGarden" component={MyGarden}/>
           <Route exact path="/resources" component={Resources}/>
