@@ -16,12 +16,18 @@ const UserSchema = new Schema({
             type: String,
             trim: true,
         },
-
+   
         zipCode: {
             type: String,
             trim: true,
-
         },
     });
-    const User = mongoose.model("User", UserSchema);
+        userSchema.pre("save", function (next) {
+            this.email = this.email.toLowerCase();
+            next();
+        }),
+   
+
+const User = mongoose.model("User", UserSchema);
+
 module.exports = User;

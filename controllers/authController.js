@@ -23,7 +23,8 @@ router.post("/", (req, res) => {
 });
 
 router.post("/login", (req, res) => {
-    User.findOne({email: req.body.email}).then(foundUser => {
+    console.log(req.body);
+    User.findOne({email: req.body.email.toLowerCase()}).then(foundUser => {
         console.log(foundUser);
         bcrypt.compare(req.body.password, foundUser.password).then((result) => {
             console.log(result);
