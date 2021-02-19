@@ -46,7 +46,7 @@ app.use("/api/user", userController);
 app.post("/api/login", (req, res) => {
     res.json({
         message: "Successfully Signed In.",
-        token: "****"
+        token: "babba"
     })
 })
 
