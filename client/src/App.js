@@ -7,28 +7,24 @@ import NewPlants from "./containers/NewPlants/NewPlants";
 import MyGarden from "./containers/MyGarden/MyGarden";
 import SignIn from "./containers/SignIn/SignIn";
 import NavBar from "./components/NavBar/NavBar";
-
-
+import ExternalApi from "./components/ExternalApi/ExternalApi";
 
 function App() {
   return (
     <div>
       <Router>
-        <NavBar/>
+        <NavBar />
         <Switch>
-          <Route exact path="/" component={Home}/>
-          <Route exact path="/about" component={About}/>
-          <Route exact path="/contact" component={Contact}/>
-          <Route exact path="/logIn" component={LogIn}/>
-          <Route exact path="/newPlants" component={NewPlants}/>
-          <Route exact path="/myGarden" component={MyGarden}/>
-          <Route exact path="/signIn" component={SignIn}/>
-
-
-
-
+          <Route exact path="/" component={Home} />
+          <Route exact path="/about" component={About} />
+          <Route exact path="/contact" component={Contact} />
+          <Route exact path="/logIn" component={LogIn} />
+          <Route exact path="/newPlants" component={NewPlants} />
+          <Route exact path="/myGarden" component={MyGarden} />
+          <Route exact path="/signIn" component={SignIn} />
         </Switch>
       </Router>
+      <ExternalApi/>
     </div>
   );
 }
