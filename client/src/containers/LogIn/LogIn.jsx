@@ -9,19 +9,33 @@ const LogIn = () => {
             </div> 
             </div>
             <div className="row">
-            <form className="col s12" 
-              
-              <label htmlfor="title">Email</label>
+            <form className="col s12">
               <div className="row">
+              <div className="col s3"></div>
+              <div className="input-field col s6">
+                  <input
+                  placeholder="Login"
+                  id="title"
+                  type="text"
 
+                  />
+              <label htmlfor="title">Email</label>
+              </div>
+      </div>
+      <div className="row">
+      <div className="col s3"></div>
+              <div className="input-field col s6">
 
-                <div className="input-field col s6">
+                
                   <input placeholder="Plant Name" 
                   id="title" 
                   type="text" 
                   />
         <label htmlfor="title">Password</label>
         </div>
+      </div>
+      <div className="row center-align">
+          <button className="waves-effect waves-light btn">Sign Up</button>
       </div>
       </form>
       </div>
