@@ -43,6 +43,13 @@ app.get("/api/config", (req, res) => {
 app.use("/api/plant", PlantController);
 app.use("/api/user", userController);
 
+app.post("/api/login", (req, res) => {
+    res.json({
+        message: "Successfully Signed In.",
+        token: "****"
+    })
+})
+
 app.get("*",(req, res) => {
     res.sendFile(path.join(__dirname, "client/build/index.html"));
 });
