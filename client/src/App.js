@@ -12,7 +12,7 @@ import SignIn from "./containers/SignIn/SignIn";
 import StartGarden from "./containers/StartGarden/StartGarden";
 import NavBar from "./components/NavBar/NavBar";
 // import AlertContext from "./utils/alertContext";
-
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 
 function App() {
   // const [alert, setAlert] = useState({ message: "", type: "" });
@@ -30,7 +30,11 @@ function App() {
           <Route exact path="/logIn" 
             component={(props) => <Login {...props} setToken={setToken} />}
             />
-          <Route exact path="/newPlants" component={NewPlants}/>
+          <ProtectedRoute 
+          exact path="/newPlants" 
+          component={NewPlants}
+          token={token}
+          />
           <Route exact path="/myGarden" component={MyGarden}/>
           <Route exact path="/resources" component={Resources}/>
           <Route exact path="/signIn" component={SignIn}/>
