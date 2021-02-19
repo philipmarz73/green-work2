@@ -1,6 +1,11 @@
 import React from 'react';
 
 const LogIn = () => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const handleFormSubmit = (e) => {
+        e.preventDefault();
+    }
     return (
         <div className="container">
         <div className="row">    
@@ -9,14 +14,19 @@ const LogIn = () => {
             </div> 
             </div>
             <div className="row">
-            <form className="col s12">
+            <form className="col s12" onSubmit={handleFormSubmit}>
               <div className="row">
               <div className="col s3"></div>
               <div className="input-field col s6">
                   <input
                   placeholder="Login"
                   id="title"
-                  type="text"
+                  type="email"
+                name="email"
+                value={email}
+                onChange={(e) => {
+                    setEmail(e.title.value);
+                }}
 
                   />
               <label htmlfor="title">Email</label>
@@ -27,11 +37,16 @@ const LogIn = () => {
               <div className="input-field col s6">
 
                 
-                  <input placeholder="Plant Name" 
-                  id="title" 
-                  type="text" 
+                  <input 
+                  id="password" 
+                  type="password"
+                  name="password"
+                  value={password}
+                  onChange={(e) => {
+                      setPassword(e.target.value);
+                  }}
                   />
-        <label htmlfor="title">Password</label>
+        <label htmlFor="title">Password</label>
         </div>
       </div>
       <div className="row center-align">
@@ -46,4 +61,3 @@ const LogIn = () => {
 
 export default LogIn;
 
-{/* onSubmit={handleFormSubmit}></div> */}
