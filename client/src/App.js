@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import "./App.css"
 import About from "./containers/About/About";
 import AddToGarden from "./containers/AddToGarden/AddToGarden";
 import Contact from "./containers/Contact/Contact";

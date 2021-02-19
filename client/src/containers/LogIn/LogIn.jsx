@@ -1,11 +1,24 @@
+import axios from 'axios';
 import React from 'react';
+import { useHistory } from "react-router-dom";
 
 const LogIn = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    const history = useHistory();
+
     const handleFormSubmit = (e) => {
         e.preventDefault();
-    }
+        axios.post("/api/login", {email, password})
+        .then(response => {
+            console.log(response.data);
+            history.push("/MyGarden");
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+    };
     return (
         <div className="container">
         <div className="row">    
