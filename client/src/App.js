@@ -1,10 +1,11 @@
+import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import "./App.css"
+// import "./App.css";
 import About from "./containers/About/About";
 import AddToGarden from "./containers/AddToGarden/AddToGarden";
 import Contact from "./containers/Contact/Contact";
 import Home from "./containers/Home/Home";
-import LogIn from "./containers/LogIn/LogIn";
+import Login from "./containers/LogIn/LogIn";
 import NewPlants from "./containers/NewPlants/NewPlants";
 import MyGarden from "./containers/MyGarden/MyGarden";
 import Resources from "./containers/Resources/Resources";
@@ -21,7 +22,7 @@ function App() {
   return (
     <div>
       <Router>
-        <NavBar/>
+        {/* <AlertContext.Provider value={{ ...alert, setAlert: setAlert}}> */}
         <Switch>
           <Route exact path="/" component={Home}/>
           <Route exact path="/about" component={About}/>
