@@ -1,8 +1,11 @@
+require('dotenv').config();
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
 const path = require("path");
+
 const PORT = process.env.PORT || 3001;
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -30,6 +33,8 @@ connection.on("error", (err) => {
 
 const PlantController = require("./controllers/plantController");
 const userController = require("./controllers/userController");
+const AuthController = require("./controllers/authController");
+
 if (process.env.NODE_ENV==="production"){
     app.use(express.static("client/build"));
 }
@@ -42,6 +47,14 @@ app.get("/api/config", (req, res) => {
 
 app.use("/api/plant", PlantController);
 app.use("/api/user", userController);
+app.use("/api/auth", AuthController);
+
+app.post("/api/login", (req, res) => {
+    res.json({
+        message: "Successfully Signed In.",
+        token: "babba"
+    })
+})
 
 app.get("*",(req, res) => {
     res.sendFile(path.join(__dirname, "client/build/index.html"));

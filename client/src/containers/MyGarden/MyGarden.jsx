@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import { FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
+import GardenTableRow from "../../components/GardenTableRow/GardenTableRow"
 const MyGarden = () => {
 
 
@@ -24,19 +23,7 @@ const MyGarden = () => {
     });
   };
   
-const deletePlant = (id) => {
-  console.log("delete a plant");
-  console.log("id");
-  axios
-  .delete(`/api/plants/${id}`)
-  .then(() => {
-    getPlants();
-  })
-  .catch(err => {
-    console.log(err);
-  });
 
-};
   
 
 
@@ -64,31 +51,13 @@ return (
         </thead>
 
         <tbody>
-          {plants.map(
-            ({
-              _id,
-              title,
-              imageURL,
-              plantType,
-              sciName,
-              moisture,
-              sunTolerance,
-              maxHeight,
-            }) => (
-            <tr key={_id}>
-            <td>{title}</td>
-            <td><img src={imageURL} alt={title} style={{height: "4em"}}></img></td>
-            <td>{plantType}</td>
-            <td>{sciName}</td>
-            <td>{moisture}</td>
-            <td>{sunTolerance}</td>
-            <td>{maxHeight}</td>
-            <td>
-              <FontAwesomeIcon icon={faTrash} onClick={() => {deletePlant(_id)}}/>
-              </td>
-          </tr>
-            )
-          )}
+          {plants.map((plant) => (
+           <GardenTableRow 
+           key={plant._id} 
+           {...plant} 
+           getPlants={getPlants}/>
+          ))}
+            
         </tbody>
       </table>
     </div>
