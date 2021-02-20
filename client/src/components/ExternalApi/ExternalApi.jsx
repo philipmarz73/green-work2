@@ -3,10 +3,10 @@ import axios from "axios";
 
 export default class ExternalApi extends React.Component {
   state = {
-    results: []
-  }
+    results: [],
+  };
      componentDidMount() {
-       axios.get(`https://trefle.io/api/v1/kingdoms/{id}?token=LJaYJar9CFy3kjCF6AccAg0UxCkhUS4IYk03GD8OIn0`)
+       axios.get(`https://www.growstuff.org/api/v1/gardens`)
        .then(res => {
          console.log(res);
          this.setState({results: res.data});         
@@ -14,10 +14,9 @@ export default class ExternalApi extends React.Component {
       }
       render() {
         return (
-          <ul>
-            {this.state.results.map(result => <li>{result.data.id}</li>)}
-          </ul>
-
+          <p>
+          {this.state.results.map(result => <li>{result.data.name}</li>)} 
+          </p>
         )
       }
 }
